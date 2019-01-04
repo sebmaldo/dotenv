@@ -147,3 +147,15 @@ set laststatus=2
 
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+
+" Resalta la línea actual
+set cursorline
+
+" Configurando el folding
+set foldenable "Enable folding
+set foldlevelstart=10 "Abierto por defecto nivel 10
+set foldnestmax=10 "Maximo cerrado nivel 10
+set foldmethod=indent "Cerrado basado en la identación
+
+" Escape con jk
+inoremap jk <esc>
