@@ -95,7 +95,7 @@ endif
 set lazyredraw
 
 " The following will make tabs and trailing spaces visible when requested
-set listchars=tab:>-,trail:·,eol:$
+"set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
 " Sin Campaña!!
@@ -159,3 +159,61 @@ set foldmethod=indent "Cerrado basado en la identación
 
 " Escape con jk
 inoremap jk <esc>
+
+" Pathogen
+execute pathogen#infect()
+
+" Javascript Syntax config
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
+
+" Solarized theme
+set background=dark
+colorscheme solarized8
+
+" Change cursor shape for diferent modes
+
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+" Autocompletado.
+set omnifunc=syntaxcomplete#Complete
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
+
+" Para documentar con JSDoc
+nmap <silent> <C-l> <Plug>(jsdoc)
+let g:vimjs#casesensistive = 0
+let g:vimjs#smartcomplete = 0
+
+
+" Se setean las librerías utilizadas en los proyectos js.
+let g:used_javascript_libs = 'react,chai,ramda,flux'
+
+" Check sintactico
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+function! FindConfig(prefix, what, where)
+    let cfg = findfile(a:what, escape(a:where, ' ') . ';')
+    return cfg !=# '' ? ' ' . a:prefix . ' ' . shellescape(cfg) : ''
+endfunction
+
+autocmd FileType javascript let b:syntastic_javascript_jscs_args =
+    \ get(g:, 'syntastic_javascript_jscs_args', '') .
+    \ FindConfig('-c', '.jscsrc', expand('<afile>:p:h', 1))
+
+"Autoformato.
+noremap <F3> :Autoformat<CR>
