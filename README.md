@@ -2,7 +2,7 @@
 Repositorio de los archivos de configuración de algunas herramientas.
 
 ## Instrucciones
-Estás son instrucciones para mi para poder instalar mi ambiente, y no son instrucciones genéricas.
+Estás son instrucciones para mi, para poder instalar mi ambiente, y no son instrucciones genéricas.
 
 
 * Clona el repositorio en la carpeta home
