@@ -5,7 +5,7 @@ Repositorio de los archivos de configuración de algunas herramientas.
 Estás son instrucciones para mi para poder instalar mi ambiente, y no son instrucciones genéricas.
 
 
-* Clona el repositorio en la carpera home
+* Clona el repositorio en la carpeta home
 ```bash
 git clone git@github.com:sebmaldo/dotenv.git
 ```
